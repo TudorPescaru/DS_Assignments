@@ -8,23 +8,23 @@ files and a list of commands to create a playlist. This was done to experience
 working with Doubly Linked Linear Lists.
 
 **List of commands:**
-	* Adding:
-		* ADD_FIRST < song_name >
-		* ADD_LAST < song_name > 
-		* ADD_AFTER < song_name >
-	* Deleting:
-		* DEL_FIRST
-		* DEL_LAST
-		* DEL_CURR
-		* DEL_SONG < song_name >
-	* Moving the cursor (cursor points to playing song):
-		* MOVE_NEXT
-		* MOVE_PREV
-	* Showing:
-		* SHOW_FIRST
-		* SHOW_LAST
-		* SHOW_CURR
-		* SHOW_PLAYLIST
+* Adding:
+	* ADD_FIRST < song_name >
+	* ADD_LAST < song_name > 
+	* ADD_AFTER < song_name >
+* Deleting:
+	* DEL_FIRST
+	* DEL_LAST
+	* DEL_CURR
+	* DEL_SONG < song_name >
+* Moving the cursor (cursor points to playing song):
+	* MOVE_NEXT
+	* MOVE_PREV
+* Showing:
+	* SHOW_FIRST
+	* SHOW_LAST
+	* SHOW_CURR
+	* SHOW_PLAYLIST
 
 ## SD2
 
