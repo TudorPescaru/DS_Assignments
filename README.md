@@ -28,6 +28,13 @@ working with Doubly Linked Linear Lists.
 
 ## SD2
 
-
+This second assignment revolves arround the problem of counting distinct 
+elements in large sets of data. The first part implements a basic frequency 
+vector to count the number of appearances for numbers from 0 to 2000000. The 
+second part makes use of the Hashtable Data Structure to store the frequency 
+of different strings. The final part implements the HyperLogLog probabilistic 
+algorithm to estimate the number of distinct elements with an accuracy of 
++/-10%. This is a simmilar procedure to the way YouTube displays its estimated 
+view count for videos.
 
 ## SD3

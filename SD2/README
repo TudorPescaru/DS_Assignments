@@ -1,0 +1,47 @@
+Copyright 2020 Pescaru Tudor-Mihai 315CA
+
+I. Vector de frecventa
+
+Am alocat dinamic un vector de frecventa cu 2000002 elemente pentru a stoca 
+frecventa fiecarui numar de la 0 la 2000000. Am citit input de la stdin pana 
+am ajuns la EOF si am incrementat valoarea din vector de la indexul 
+elementului. Am afisat fiecare element cu frecventa != 0 impreuna cu 
+frecventa sa.
+
+II. Hashtable cu open addresing
+
+Am declarat un tip de structura info ce contine o cheie de tip string si un 
+intreg count ca valoare. Structura pentru Hashtable contine un nr maxim de
+bucket-uri si un vector de structuri info ca vector de bucketuri. Am folosit 
+functii pentru initializare ce aloca memoria pentru vectorul de bucketuri, 
+functie de adaugare, functie de printare a elementelor, de eliberare a 
+memoriei, o functie de hash si una de comparare a cheilor, luate din 
+laboratorul de Hashtable. Functia de adaugare calculeaza index-ul bucket-ului 
+ce ar trebui folosit si verifica daca acesta este liber, caz in care adauga 
+elementul cheia si frecventa egala cu 1. In caz contrar verifica daca deja se 
+afla acelasi element acolo comparand cheile si creste frecventa in caz 
+afirmativ. Altfel cauta urmatorul bucket liber sau un bucket care deja contine 
+elementul. Daca se ajunge la index maxim urmatoarea incrementare duce la index 
+0 pentru a asigura continuitate. Fucntia de print afisieaza toate elementele 
+si frecventa lor. Initial se face o trecere prin input-uri pentru a determina 
+numarul de bucketuri cu care trebuie initializat Hashtable-ul. Mai apoi se 
+reiau inputurile si se adauga in Hashtable. La final se afiseaza si se 
+elibereaza memoria.
+
+III. Estimatori probabilistici
+
+Pentru o acuratete cat mai buna am ales o impartire de 16 cu 16 biti intre 
+portiunea pentru index si cea pentru numararea secventei de 0-uri. Am alocat 
+doi vectori folosind 2^16, unul pentru valorile din algoritmul HyperLogLog 
+si unul pentru a tine cont de ce bucketuri sunt folosite. Am folosit functia 
+de hash folosita si la partea a doua. Am obtinut indexul aplicand o masca si 
+facand shiftari, apoi am convertit acea portiune folosind o alta masca astfel, 
+ramanand doar cu portiunea pentru numarare. Am luat un contor bits care este 
+egal cu 32 - nr de biti pt portiunea de index si care scade pana la 0. Pentru 
+fiecare valoare a lui bits am facut & intre hash si 2^(bits-1) pentru a obtine 
+astfel valoare primului bit din protiunea de numarare. In cazul in care este 0 
+se incrementeaza lungimea secventei iar parcurgerea se opreste la primul bit 
+de 1. Daca valoarea este mai mare decat cea din bucketul indicat de index, 
+valoarea se retine in bucket. Am calculat apoi celelalte elemente folosind 
+doar bucket-urile utilizate, am afisat estimarea si am eliberat memoria.
+
