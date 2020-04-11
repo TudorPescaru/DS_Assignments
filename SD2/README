@@ -30,18 +30,18 @@ elibereaza memoria.
 
 III. Estimatori probabilistici
 
-Pentru o acuratete cat mai buna am ales o impartire de 16 cu 16 biti intre 
-portiunea pentru index si cea pentru numararea secventei de 0-uri. Am alocat 
-doi vectori folosind 2^16, unul pentru valorile din algoritmul HyperLogLog 
-si unul pentru a tine cont de ce bucketuri sunt folosite. Am folosit functia 
-de hash folosita si la partea a doua. Am obtinut indexul aplicand o masca si 
-facand shiftari, apoi am convertit acea portiune folosind o alta masca astfel, 
-ramanand doar cu portiunea pentru numarare. Am luat un contor bits care este 
-egal cu 32 - nr de biti pt portiunea de index si care scade pana la 0. Pentru 
-fiecare valoare a lui bits am facut & intre hash si 2^(bits-1) pentru a obtine 
-astfel valoare primului bit din protiunea de numarare. In cazul in care este 0 
-se incrementeaza lungimea secventei iar parcurgerea se opreste la primul bit 
-de 1. Daca valoarea este mai mare decat cea din bucketul indicat de index, 
-valoarea se retine in bucket. Am calculat apoi celelalte elemente folosind 
-doar bucket-urile utilizate, am afisat estimarea si am eliberat memoria.
+Pentru o acuratete cat mai buna am ales o impartire de 11 cu 21 biti intre 
+portiunea pentru index si cea pentru calcularea valorii din bucket. Am 
+utilizat documentatia oficiala a algoritmului HyperLogLog, si am considerat 
+poztitia celui mai din stanga bit de 1 din portiunea de valoare drept valoarea 
+ce se va introduce in bucket. Aceasta pozitie este indexata incepand de la 1, 
+incepand din partea stanga. Pentru a obtine partea de index am aplicata o 
+masca pentru a pastra doar cei mai din stanga 11 biti si i-am shiftat pana 
+pe pozitia cea mai din dreapta pentru a afla valoarea. Pentru a afla cealalta 
+portiune am aplicat o maska pentru a elimina cei mai din stanga 11 biti. Apoi, 
+facund un & intre numar si 2^(bits-1) pentru bits de la 21 la 0 am aflat 
+pozitia celui mai din stanga bit de 1 si am adaugat-o la vector. In calcularea 
+agregarii am folosit doar valorile bucket-urilor utilizate iar pentru factorul 
+de atenuare si pentru rezultatul final am folosit doar numarul de bucket-uri 
+utilizate.
 

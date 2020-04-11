@@ -34,7 +34,15 @@ vector to count the number of appearances for numbers from 0 to 2000000. The
 second part makes use of the Hashtable Data Structure to store the frequency 
 of different strings. The final part implements the HyperLogLog probabilistic 
 algorithm to estimate the number of distinct elements with an accuracy of 
-+/-10%. This is a simmilar procedure to the way YouTube displays its estimated 
-view count for videos.
+~3%. This is a simmilar procedure to the way YouTube displays it's estimated 
+view count for videos and Reddit displays it's estimated view count for posts. 
+The algorithm uses a hashing function to compute hashes for values in given 
+dataset and uses a 11/21 split setup. This means that first 11 bits (MSB to 
+LSB order) of the hash are used to determine the index for the bucket that 
+will be used to store the value, value which represents the maximum of all 
+the values for all the elements which will point to this bucket. For a given 
+element the value to be potentially added represents the leftmost position of 
+a 1 bit in the 21 bit portion that is left of the hash (positions are indexed 
+from one). 
 
 ## SD3

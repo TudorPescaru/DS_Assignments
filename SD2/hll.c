@@ -12,7 +12,7 @@ unsigned int hash(void *a) {
 }
 
 int main(int argc, char **argv) {
-    int m, *M, n, j, x, bits, k, *used, count_used = 0, E;
+    int m, *M, n, j, x, bits, k, count_used = 0, E;
     unsigned int h;
     double Z = 0, alpha;
     FILE *f;
@@ -22,12 +22,10 @@ int main(int argc, char **argv) {
 		exit(0);
 	}
 	// Set initial division for index and 0 count portions
-	k = 16;
+	k = 11;
     m = 1 << k;
     // Allocate HLL vector of elements
     M = (int*)calloc(m, sizeof(int));
-    // Allocate vector to determine used buckets
-    used = (int*)calloc(m, sizeof(int));
 	f = fopen(argv[1], "r");
 	// Read inputs from given file
 	while (!feof(f)) {
@@ -36,11 +34,10 @@ int main(int argc, char **argv) {
 		h = hash(&n);
 		// Get index bits using mask and increment used vector element
 		j = ((1 << k) - 1) & (h >> (32 - k));
-		used[j]++;
 		// Apply mask to keep only bits for 0 count portion
 		h = ((1 << (32 - k)) - 1) & h;
-		// Count each 0 bit from postion k+1 to LSB
-		x = 0;
+		// Find postion of leftmost 1 bit using indexing starting with 1
+		x = 1;
 		bits = 32 - k;
 		while (bits) {
 			if ((h & (1 << (bits - 1))) == 0) {
@@ -51,7 +48,7 @@ int main(int argc, char **argv) {
 			}
 			bits--;
 		}
-		// Add 0 bit sequence size to HLL vector if bigger than existing
+		// Add postion to HLL vector if bigger than existing
 		if (x > M[j]) {
 			M[j] = x;
 		}
@@ -59,7 +56,7 @@ int main(int argc, char **argv) {
 	// Compute agregation of HLL vector values
 	for (j = 0; j < m; j++) {
 		// Use only used buckets
-		if (used[j] != 0) {
+		if (M[j] != 0) {
 			Z = Z + (1.00 / (1 << M[j]));
 			count_used++;
 		}
@@ -73,6 +70,5 @@ int main(int argc, char **argv) {
 	printf("%d\n", E);
 	fclose(f);
     free(M);
-    free(used);
     return 0;
 }
