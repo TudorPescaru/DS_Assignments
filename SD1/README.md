@@ -1,5 +1,7 @@
 Copyright 2020 Pescaru Tudor-Mihai 315CA
 
+# Music Playlist
+
 Solutia aleasa implementeaza trei tipuri de structuri: o structura de tip 
 Header ce va stoca toate informatiile necesare pentru fiecare melodie (TAG, 
 titlu, artist, album si an de aparitie); o structura de tip Doubly Linked List 

@@ -1,6 +1,8 @@
 Copyright 2020 Pescaru Tudor-Mihai 315CA
 
-I. Vector de frecventa
+# Count-distinct problem
+
+## I. Vector de frecventa
 
 Am alocat dinamic un vector de frecventa cu 2000002 elemente pentru a stoca 
 frecventa fiecarui numar de la 0 la 2000000. Am citit input de la stdin pana 
@@ -8,7 +10,7 @@ am ajuns la EOF si am incrementat valoarea din vector de la indexul
 elementului. Am afisat fiecare element cu frecventa != 0 impreuna cu 
 frecventa sa.
 
-II. Hashtable cu open addresing
+## II. Hashtable cu open addresing
 
 Am declarat un tip de structura info ce contine o cheie de tip string si un 
 intreg count ca valoare. Structura pentru Hashtable contine un nr maxim de
@@ -28,7 +30,7 @@ numarul de bucketuri cu care trebuie initializat Hashtable-ul. Mai apoi se
 reiau inputurile si se adauga in Hashtable. La final se afiseaza si se 
 elibereaza memoria.
 
-III. Estimatori probabilistici
+## III. Estimatori probabilistici
 
 Pentru o acuratete cat mai buna am ales o impartire de 11 cu 21 biti intre 
 portiunea pentru index si cea pentru calcularea valorii din bucket. Am 

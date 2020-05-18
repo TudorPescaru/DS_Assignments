@@ -46,3 +46,20 @@ a 1 bit in the 21 bit portion that is left of the hash (positions are indexed
 from one). 
 
 ## SD3
+
+The third assignment puts together an API that aggregates data about 
+scientific papers. These papers are represented in a JSON format with only the 
+most important elements such as title, authors, venue of publication, year of 
+publication, fields discussed, referenced papers. These files are parsed using 
+the "parson" JSON parser, available on github and stored. The API supports 
+the mixing of updates and queries and allows for queries which tackle graph 
+tasks such as finding the oldest influence of a paper, building and navigating 
+a graph of papers linked through references or a graph of authors linked 
+through their collaborations on papers. The implementation uses different 
+variants of Hashtables to emulate and perform graph opperations. The 
+implementation prioritised time complexity over space complexity, hence why 
+a large ammount of memory is allocated. The assignment was not completed due 
+to time constraints and bugs are present in 2 of 10 tasks, these tasks only 
+working partially, as well as one task not being implemented yet.
+
+
